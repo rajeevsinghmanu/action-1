@@ -5,10 +5,7 @@ on:
     push:
         branches:
             - main
-            - 'feature/*'
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true            
+            - 'feature/*'           
 
 jobs:
     unit-testing:
@@ -26,7 +23,7 @@ jobs:
             - name: Setup Nodejs
               uses: actions/setup-node@v4
               with:
-                node-version: 24
+                node-version: 20
             - name: Install Dependencies
               run: npm install
             - name: Unit Testing
