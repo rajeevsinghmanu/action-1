@@ -11,6 +11,10 @@ jobs:
     unit-testing:
         name: unit-testing
         runs-on: ubuntu-latest
+
+        env:
+         MONGO_URI: ${{ secrets.MONGO_URI }}
+
         steps:
             - name: Cheakout Repository
               uses: actions/checkout@v4 
