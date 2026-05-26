@@ -13,35 +13,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Cheakout Repository
-              uses: actions/checkout@v4
-            # Debug repository structure
-            - name: Check Repository Files
-              run: |
-                pwd
-                ls -la
-                find . -maxdepth 2  
+              uses: actions/checkout@v4 
             - name: Setup Nodejs
               uses: actions/setup-node@v4
               with:
-                node-version: 20
+                node-version: 18
             - name: Install Dependencies
               run: npm install
             - name: Unit Testing
               run: npm test
-            - name: Run Application
-              run: node index.js
-            - name: Generate Test Result File
-              run: |
-                echo "<testsuite name='Mocha Tests'></testsuite>" > test-result.xml  
-            - name: Archive Test Result
-              uses: actions/upload-artifact@v4
-              with:
-                name: Mocha Tests
-                path: test-result.xml
-            - name: Check Code Coverage
-              run: npm run coverage
-            - name: Archive Test Result
-              uses: actions/upload-artifact@v4
-              with:
-                name: Code-Coverage-Result
-                path: coverage
