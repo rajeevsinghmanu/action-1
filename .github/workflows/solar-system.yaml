@@ -14,6 +14,8 @@ jobs:
 
         env:
          MONGO_URI: ${{ secrets.MONGO_URI }}
+         MONGO_USERNAME: ${{ vars.MONGO_USERNAME}}
+         MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD}}
 
         steps:
             - name: Cheakout Repository
