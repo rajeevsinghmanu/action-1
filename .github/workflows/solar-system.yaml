@@ -24,6 +24,12 @@ jobs:
               uses: actions/setup-node@v4
               with:
                 node-version: 18
+
+            - name: Cache NPM Dependencies
+              uses: actions/cache@v4
+              with:
+                path: node_modules
+                key: ${{runner.os}}-node-modules-${{hashFiles('package-lock.json')}}    
             - name: Install Dependencies
               run: npm install
             - name: Unit Testing
@@ -58,6 +64,12 @@ jobs:
                 node-version: 18
             - name: Install Dependencies
               run: npm install
+
+            - name: Cache NPM Dependencies
+              uses: actions/cache@v4
+              with:
+                path: node_modules
+                key: ${{runner.os}}-node-modules-${{hashFiles('package-lock.json')}}  
             - name: Check Code Coverage
               continue-on-error: true
               run: npm run coverage
